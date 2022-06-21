@@ -44,6 +44,13 @@ namespace ContosoUniversity.Pages.Instructors
                 .OrderBy(i => i.LastName)
                 .ToListAsync();
 
+            if (p == null)
+            {
+                p = 1;
+            }
+
+            InstructorData.Instructors = InstructorData.Instructors.Skip((int)((p - 1) * PageSize)).Take(PageSize);
+
             if (id != null)
             {
                 InstructorID = id.Value;
