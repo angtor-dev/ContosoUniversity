@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="hero px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold">
+        Universidad de Contoso
+    </h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+            La Universidad de Contoso se dedica a la excelencia en la enseñanza, el aprendizaje y la investigación, y al desarrollo de líderes que marcan la diferencia a nivel mundial.
+        </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+            <a class="btn btn-primary btn-lg px-4 me-sm-3" asp-page="/Students/Index">Ver Estudiantes</a>
+            <a class="btn btn-outline-secondary btn-lg px-4" asp-page="/Instructors/Index">Instructores</a>
+        </div>
+    </div>
+    <div class="overflow-hidden" style="max-height: 40vh;">
+        <div class="container px-5 pt-5">
+            <img src="~/img/hero.png" class="img-fluid border rounded-3 mb-4" width="800" height="500">
+        </div>
+    </div>
+</div>

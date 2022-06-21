@@ -1,0 +1,62 @@
+correccion de errores y estilos
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Tue Jun 7 09:01:13 2022 -0400
+#
+# On branch newStyles
+# Changes to be committed:
+#	modified:   .vs/ContosoUniversity/DesignTimeBuild/.dtbcache.v2
+#	new file:   .vs/ContosoUniversity/FileContentIndex/128a1c72-d61a-4baa-87be-3983587f1b2d.vsidx
+#	renamed:    .vs/ContosoUniversity/FileContentIndex/933fc34c-7e89-4a9c-b365-22649ddf14a8.vsidx -> .vs/ContosoUniversity/FileContentIndex/1e7a86c5-0daf-43de-9153-01cb6b1334c4.vsidx
+#	new file:   .vs/ContosoUniversity/FileContentIndex/3a567efb-ee4a-4b02-bb61-e83a8cbda94c.vsidx
+#	deleted:    .vs/ContosoUniversity/FileContentIndex/508ef0a4-40fe-4a33-b609-d4f23959b76b.vsidx
+#	new file:   .vs/ContosoUniversity/FileContentIndex/56042b3f-bdd8-4dd3-b517-367d9314435b.vsidx
+#	new file:   .vs/ContosoUniversity/FileContentIndex/61797234-aef6-4466-81d6-ba76f83b1ded.vsidx
+#	deleted:    .vs/ContosoUniversity/FileContentIndex/89f20205-2a4f-41f6-87ee-26d12dca2e33.vsidx
+#	new file:   .vs/ContosoUniversity/FileContentIndex/9b2b15a7-77b0-498a-8775-6614edd50ce8.vsidx
+#	new file:   .vs/ContosoUniversity/FileContentIndex/a7806484-0946-403b-bcb0-90d625b759e8.vsidx
+#	new file:   .vs/ContosoUniversity/FileContentIndex/a7b5ca8b-1eea-4a1d-8cfd-e32d9be77825.vsidx
+#	new file:   .vs/ContosoUniversity/FileContentIndex/c448df62-98c0-4733-9b95-1108b9338460.vsidx
+#	new file:   .vs/ContosoUniversity/FileContentIndex/cd5f8324-7582-4827-9733-121eca0f65d4.vsidx
+#	deleted:    .vs/ContosoUniversity/FileContentIndex/d805968f-4fe6-4518-a92a-9688d19622e4.vsidx
+#	new file:   .vs/ContosoUniversity/FileContentIndex/e76e6f89-732b-4fbe-97f3-00634449394d.vsidx
+#	new file:   .vs/ContosoUniversity/FileContentIndex/ed5e4392-5e46-4b36-8827-1b17f0f39cd9.vsidx
+#	modified:   .vs/ContosoUniversity/v17/.suo
+#	modified:   .vs/ProjectEvaluation/contosouniversity.metadata.v2
+#	modified:   .vs/ProjectEvaluation/contosouniversity.projects.v2
+#	modified:   ContosoUniversity/Pages/About.cshtml
+#	modified:   ContosoUniversity/Pages/Courses/Create.cshtml
+#	modified:   ContosoUniversity/Pages/Courses/Delete.cshtml
+#	modified:   ContosoUniversity/Pages/Courses/Details.cshtml
+#	modified:   ContosoUniversity/Pages/Courses/Edit.cshtml
+#	modified:   ContosoUniversity/Pages/Index.cshtml
+#	modified:   ContosoUniversity/Pages/Instructors/Create.cshtml
+#	modified:   ContosoUniversity/Pages/Instructors/Delete.cshtml
+#	modified:   ContosoUniversity/Pages/Instructors/Details.cshtml
+#	modified:   ContosoUniversity/Pages/Instructors/Edit.cshtml
+#	modified:   ContosoUniversity/Pages/Instructors/Index.cshtml
+#	modified:   ContosoUniversity/Pages/Shared/_Layout.cshtml
+#	modified:   ContosoUniversity/Pages/Students/Delete.cshtml
+#	modified:   ContosoUniversity/Pages/Students/Details.cshtml
+#	modified:   ContosoUniversity/Pages/Students/Edit.cshtml
+#	modified:   ContosoUniversity/Pages/Students/Index.cshtml
+#	modified:   ContosoUniversity/Pages/Students/Index.cshtml.cs
+#	deleted:    ContosoUniversity/Pages/oldIndex.cshtml
+#	modified:   ContosoUniversity/bin/Debug/net6.0/ContosoUniversity.dll
+#	modified:   ContosoUniversity/bin/Debug/net6.0/ContosoUniversity.pdb
+#	modified:   ContosoUniversity/bin/Debug/net6.0/ContosoUniversity.staticwebassets.runtime.json
+#	modified:   ContosoUniversity/obj/Debug/net6.0/ContosoUniversity.GeneratedMSBuildEditorConfig.editorconfig
+#	modified:   ContosoUniversity/obj/Debug/net6.0/ContosoUniversity.csproj.AssemblyReference.cache
+#	modified:   ContosoUniversity/obj/Debug/net6.0/ContosoUniversity.dll
+#	modified:   ContosoUniversity/obj/Debug/net6.0/ContosoUniversity.pdb
+#	new file:   ContosoUniversity/obj/Debug/net6.0/project.razor.json
+#	modified:   ContosoUniversity/obj/Debug/net6.0/project.razor.vs.json
+#	modified:   ContosoUniversity/obj/Debug/net6.0/ref/ContosoUniversity.dll
+#	modified:   ContosoUniversity/obj/Debug/net6.0/refint/ContosoUniversity.dll
+#	modified:   ContosoUniversity/obj/Debug/net6.0/staticwebassets.build.json
+#	modified:   ContosoUniversity/obj/Debug/net6.0/staticwebassets.development.json
+#	modified:   ContosoUniversity/obj/staticwebassets.pack.sentinel
+#	new file:   ContosoUniversity/wwwroot/img/hero.png
+#
