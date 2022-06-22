@@ -55,21 +55,8 @@ namespace ContosoUniversity.Pages.Instructors
             var count = InstructorData.Instructors.Count();
             var totalPages = (int)Math.Ceiling(count / (double)PageSize);
             InstructorData.Instructors = InstructorData.Instructors.Skip((int)((p - 1) * PageSize)).Take(PageSize);
-            if (p > 1)
-            {
-                HasPreviousPage = true;
-            } else
-            {
-                HasPreviousPage = false;
-            }
-
-            if (p < totalPages)
-            {
-                HasNextPage = true;
-            } else
-            {
-                HasNextPage = false;
-            }
+            HasPreviousPage = p > 1;
+            HasNextPage = p < totalPages;
 
             if (id != null)
             {
