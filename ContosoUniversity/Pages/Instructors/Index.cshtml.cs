@@ -29,12 +29,19 @@ namespace ContosoUniversity.Pages.Instructors
         public int InstructorID { get; set; }
         public int CourseID { get; set; }
         public int PageSize { get; set; }
-        public PaginatedList<Instructor> Instructors { get; set; }
+        public int PageIndex { get; set; }
+        public bool HasPreviousPage { get; set; }
+        public bool HasNextPage { get; set; }
 
         //p = PageNumber
         public async Task OnGetAsync(int? id, int? courseID, int? p)
         {
-            PageSize = 4;
+            PageSize = Configuration.GetValue("PageSize", 4);
+            if (p == null)
+            {
+                p = 1;
+            }
+            PageIndex = (int)p;
 
             InstructorData = new InstructorIndexData();
             InstructorData.Instructors = await _context.Instructors
@@ -44,12 +51,25 @@ namespace ContosoUniversity.Pages.Instructors
                 .OrderBy(i => i.LastName)
                 .ToListAsync();
 
-            if (p == null)
+            ///Paginacion
+            var count = InstructorData.Instructors.Count();
+            var totalPages = (int)Math.Ceiling(count / (double)PageSize);
+            InstructorData.Instructors = InstructorData.Instructors.Skip((int)((p - 1) * PageSize)).Take(PageSize);
+            if (p > 1)
             {
-                p = 1;
+                HasPreviousPage = true;
+            } else
+            {
+                HasPreviousPage = false;
             }
 
-            InstructorData.Instructors = InstructorData.Instructors.Skip((int)((p - 1) * PageSize)).Take(PageSize);
+            if (p < totalPages)
+            {
+                HasNextPage = true;
+            } else
+            {
+                HasNextPage = false;
+            }
 
             if (id != null)
             {
@@ -72,13 +92,6 @@ namespace ContosoUniversity.Pages.Instructors
                 }
                 InstructorData.Enrollments = selectedCourse.Enrollments;
             }
-
-            IQueryable<Instructor> instructorIQ = from i in _context.Instructors
-                                             select i;
-
-            var pageSize = Configuration.GetValue("PageSize", PageSize);
-            Instructors = await PaginatedList<Instructor>.CreateAsync(
-                instructorIQ.AsNoTracking(), p ?? 1, pageSize);
         }
     }
 }

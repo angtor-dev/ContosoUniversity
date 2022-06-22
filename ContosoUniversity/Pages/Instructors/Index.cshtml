@@ -55,7 +55,7 @@
                     }
                 </td>
                 <td>
-                    <a asp-page="./Index" asp-route-id="@item.ID" asp-route-p="@Model.Instructors.PageIndex">Seleccionar</a> |
+                    <a asp-page="./Index" asp-route-id="@item.ID" asp-route-p="@Model.PageIndex">Seleccionar</a> |
                     <a asp-page="./Edit" asp-route-id="@item.ID">Editar</a> |
                     <a asp-page="./Details" asp-route-id="@item.ID">Detalles</a> |
                     <a asp-page="./Delete" asp-route-id="@item.ID">Eliminar</a>
@@ -85,7 +85,7 @@
             }
             <tr class="@selectedRow">
                 <td>
-                    <a asp-page="./Index" asp-route-id="@Model.InstructorID" asp-route-courseID="@item.CourseID" asp-route-p="@Model.Instructors.PageIndex">Seleccionar</a>
+                    <a asp-page="./Index" asp-route-id="@Model.InstructorID" asp-route-courseID="@item.CourseID" asp-route-p="@Model.PageIndex">Seleccionar</a>
                 </td>
                 <td>
                     @item.CourseID
@@ -127,26 +127,25 @@
 }
 
 @{
-    var prevDisabled = !Model.Instructors.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.Instructors.HasNextPage ? "disabled" : "";
-    Console.WriteLine(Model.InstructorID);
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
 }
 
 @if (Model.InstructorID == 0)
 {
     <a asp-page="./Index"
-       asp-route-p="@(Model.Instructors.PageIndex - 1)"
+       asp-route-p="@(Model.PageIndex - 1)"
        class="btn btn-primary @prevDisabled">
         Anterior
     </a>
     <a asp-page="./Index"
-       asp-route-p="@(Model.Instructors.PageIndex + 1)"
+       asp-route-p="@(Model.PageIndex + 1)"
        class="btn btn-primary @nextDisabled">
         Siguiente
     </a>
 } else {
     <a asp-page="./Index"
-       asp-route-p="@Model.Instructors.PageIndex"
+       asp-route-p="@Model.PageIndex"
        class="btn btn-primary">
         Regresar
     </a>
