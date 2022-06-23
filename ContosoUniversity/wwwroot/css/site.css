@@ -15,6 +15,7 @@ html.light {
     --input-bg-color: #fff;
     --input-border-color: #ced4da;
     --swicth-bg-color: #dee2e6;
+    --sort-icon-color: #0d6efd;
     --focus-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
     --d-light: inline;
     --d-dark: none;
@@ -34,6 +35,7 @@ html.dark {
     --input-bg-color: #2e3857;
     --input-border-color: #696f81;
     --swicth-bg-color: #0d6efd;
+    --sort-icon-color: #0d6efd;
     --focus-shadow: 0 0 0 0.25rem rgb(13 110 253 / 80%);
     --d-light: none;
     --d-dark: inline;
@@ -161,9 +163,12 @@ svg[b-bnnbnzjzeh] {
 }
 
 .sort-icon {
-    writing-mode: vertical-lr;
     user-select: none;
-    font-weight: bold;
+}
+
+.sort-icon svg {
+    width: 16px;
+    fill: var(--sort-icon-color);
 }
 
 input.form-control, select.form-control {
