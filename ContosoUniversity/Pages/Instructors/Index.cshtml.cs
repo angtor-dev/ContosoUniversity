@@ -8,7 +8,6 @@ using ContosoUniversity.Data;
 using ContosoUniversity.Models.SchoolViewModels;  // Add VM
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,12 +16,10 @@ namespace ContosoUniversity.Pages.Instructors
     public class IndexModel : PageModel
     {
         private readonly ContosoUniversity.Data.SchoolContext _context;
-        private readonly IConfiguration Configuration;
 
-        public IndexModel(ContosoUniversity.Data.SchoolContext context, IConfiguration configuration)
+        public IndexModel(ContosoUniversity.Data.SchoolContext context)
         {
             _context = context;
-            Configuration = configuration;
         }
 
         public InstructorIndexData InstructorData { get; set; }
@@ -36,7 +33,7 @@ namespace ContosoUniversity.Pages.Instructors
         //p = PageNumber
         public async Task OnGetAsync(int? id, int? courseID, int? p)
         {
-            PageSize = Configuration.GetValue("PageSize", 4);
+            PageSize = getPageSize();
             if (p == null)
             {
                 p = 1;
@@ -79,6 +76,31 @@ namespace ContosoUniversity.Pages.Instructors
                 }
                 InstructorData.Enrollments = selectedCourse.Enrollments;
             }
+        }
+
+        private int getPageSize()
+        {
+            int defaultPageSize = 4;
+            int pageSize = defaultPageSize;
+            string? pageSizeCookie = Request.Cookies["pageSize"];
+
+            if (pageSizeCookie != null)
+            {
+                try
+                {
+                    pageSize = Int32.Parse(pageSizeCookie);
+                    if (pageSize < 1 || pageSize > 50)
+                    {
+                        pageSize = defaultPageSize;
+                    }
+                }
+                catch (FormatException)
+                {
+                    pageSize = defaultPageSize;
+                }
+            }
+
+            return pageSize;
         }
     }
 }

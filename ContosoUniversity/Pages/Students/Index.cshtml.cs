@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using ContosoUniversity.Data;
 using ContosoUniversity.Models;
 
@@ -14,12 +13,10 @@ namespace ContosoUniversity.Pages.Students
     public class IndexModel : PageModel
     {
         private readonly SchoolContext _context;
-        private readonly IConfiguration Configuration;
 
-        public IndexModel(SchoolContext context, IConfiguration configuration)
+        public IndexModel(SchoolContext context)
         {
             _context = context;
-            Configuration = configuration;
         }
 
         public string NameSort { get; set; }
@@ -28,7 +25,6 @@ namespace ContosoUniversity.Pages.Students
         public string FirstNameSort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
-        public int PageSize { get; set; }
 
         public PaginatedList<Student> Students { get; set; }
 
@@ -40,7 +36,6 @@ namespace ContosoUniversity.Pages.Students
             DateSort = o == "Date" ? "date_desc" : "Date";
             IdSort = o == "id" ? "id_desc" : "id";
             FirstNameSort = o == "fname" ? "fname_desc" : "fname";
-            PageSize = 4;
             if (q != null)
             {
                 p = 1;
@@ -89,9 +84,34 @@ namespace ContosoUniversity.Pages.Students
                     break;
             }
 
-            var pageSize = Configuration.GetValue("PageSize", PageSize);
+            var pageSize = getPageSize();
             Students = await PaginatedList<Student>.CreateAsync(
                 studentsIQ.AsNoTracking(), p ?? 1, pageSize);
+        }
+
+        private int getPageSize()
+        {
+            int defaultPageSize = 4;
+            int pageSize = defaultPageSize;
+            string? pageSizeCookie = Request.Cookies["pageSize"];
+
+            if (pageSizeCookie != null)
+            {
+                try
+                {
+                    pageSize = Int32.Parse(pageSizeCookie);
+                    if (pageSize < 1 || pageSize > 50)
+                    {
+                        pageSize = defaultPageSize;
+                    }
+                }
+                catch (FormatException)
+                {
+                    pageSize = defaultPageSize;
+                }
+            }
+
+            return pageSize;
         }
     }
 }
