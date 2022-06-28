@@ -7,7 +7,10 @@ function init() {
     document.getElementById("config-btn").addEventListener("click", openSideMenu);
     document.querySelector(".side-menu-container").addEventListener("click", closeSideMenu);
     document.querySelector(".side-menu .sm-header .xmark-wrapper").addEventListener("click", closeSideMenu);
-    document.querySelector(".side-menu").addEventListener("click", function(e) {e.stopPropagation()});
+    document.querySelector(".side-menu").addEventListener("click", function (e) { e.stopPropagation() });
+    document.getElementById("pageSize-form").addEventListener("submit", function (e) { e.preventDefault() });
+    document.querySelector("#pageSize-form input").addEventListener("blur", savePageSize);
+    loadPageSize();
 }
 
 //Carga y aplica el tema guardado en localStorage
@@ -63,4 +66,47 @@ function closeSideMenu() {
         container.style.display = "none";
     }, 400)
     body.style.overflowY = "auto";
+}
+
+function savePageSize() {
+    document.cookie = "pageSize=" + this.value + "; expires=" + new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 30).toGMTString();
+}
+
+function loadPageSize() {
+    const pageSizeInput = document.querySelector("#pageSize-form input");
+    const defPageSize = 4; //default page size
+    let pageSize = getCookie('pageSize');
+    
+    if (pageSize == "") {
+        pageSize = defPageSize;
+    } else {
+        pageSize = parseInt(pageSize, 10);
+
+        if (isNaN(pageSize)) {
+            pageSize = defPageSize;
+            document.cookie = "pageSize=" + defPageSize + "; expires=" + new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 30).toGMTString();
+        } else {
+            if (pageSize < 1 || pageSize > 50) {
+                pageSize = defPageSize;
+                document.cookie = "pageSize=" + defPageSize + "; expires=" + new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 30).toGMTString();
+            }
+        }
+    }
+    pageSizeInput.value = pageSize;
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }

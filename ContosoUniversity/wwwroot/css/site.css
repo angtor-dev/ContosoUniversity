@@ -296,6 +296,11 @@ footer.border-top {
     background-color: var(--btn-bg-color);
 }
 
+.side-menu .sm-btn .icontext-wrapper {
+    display: flex;
+    align-items: center;
+}
+
 .side-menu .sm-btn svg {
     margin-right: 10px;
 }
@@ -327,4 +332,12 @@ svg.moon {
     border-radius: 24px;
     transform: var(--dark-mode-swicth);
     transition: transform .3s;
+}
+
+.side-menu .sm-btn input[type=number] {
+    width: 40px;
+    font-weight: 900;
+    background-color: transparent;
+    color: var(--font-darker-color);
+    border: 0px solid transparent;
 }
