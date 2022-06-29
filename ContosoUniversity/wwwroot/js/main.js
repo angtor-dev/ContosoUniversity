@@ -8,7 +8,7 @@ function init() {
     document.querySelector(".side-menu-container").addEventListener("click", closeSideMenu);
     document.querySelector(".side-menu .sm-header .xmark-wrapper").addEventListener("click", closeSideMenu);
     document.querySelector(".side-menu").addEventListener("click", function (e) { e.stopPropagation() });
-    document.getElementById("pageSize-form").addEventListener("submit", function (e) { e.preventDefault() });
+    document.getElementById("pageSize-form").addEventListener("submit", savePageSize);
     document.querySelector("#pageSize-form input").addEventListener("blur", savePageSize);
     loadPageSize();
 }
@@ -69,7 +69,8 @@ function closeSideMenu() {
 }
 
 function savePageSize() {
-    document.cookie = "pageSize=" + this.value + "; expires=" + new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 30).toGMTString();
+    const pageSizeInput = document.querySelector('#pageSize-form input');
+    document.cookie = "pageSize=" + pageSizeInput.value + "; expires=" + new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 30).toGMTString();
 }
 
 function loadPageSize() {
